@@ -1,4 +1,3 @@
-// WorldClockSlider.tsx
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,7 +6,6 @@ import "swiper/css";
 import ClockTile from "./item";
 import { cn } from "@/lib/utils/cn";
 import { useWorldClock } from "./hooks/useWorldClock";
-import { WeatherTileSkeleton } from "../weather/skeleton";
 import { ClockTileSkeleton } from "./skeleton";
 
 interface WorldClockSliderProps {
@@ -30,7 +28,6 @@ export default function WorldClockSlider({
         <ClockTile
           key={i}
           city={clock.city}
-          timezone={clock.timezone}
           time={clock.time}
           hour={clock.hour}
           timezoneAbbr={clock.timezoneAbbr}

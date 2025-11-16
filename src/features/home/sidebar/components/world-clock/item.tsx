@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils/cn";
 
 interface ClockTileProps {
   city: string;
-  timezone: string;
   time: string;
   hour: number;
   timezoneAbbr?: string;
@@ -13,7 +12,6 @@ interface ClockTileProps {
 
 export default function ClockTile({
   city,
-  timezone,
   time,
   hour,
   timezoneAbbr,
