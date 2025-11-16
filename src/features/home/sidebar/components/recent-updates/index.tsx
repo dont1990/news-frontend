@@ -2,18 +2,19 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import TimeAgo from "@/components/shared/time-ago";
-import { IArticle } from "@/types/article";
 import Link from "next/link";
 import { routes } from "@/routes/routes";
 import ClockIcon from "@/assets/shared-icons/clock";
+import { RecentUpdatesCardSkeleton } from "./skeleton";
+import { useLimitedNews } from "@/features/home/hooks/useLimitedNews";
 
-interface RecentUpdatesCardProps {
-  articles: IArticle[];
-}
+export default function RecentUpdatesCard() {
+  const { data: recentUpdates = [], isLoading } = useLimitedNews({
+    sort: "desc",
+  });
 
-export default function RecentUpdatesCard({
-  articles,
-}: RecentUpdatesCardProps) {
+  if (isLoading) return <RecentUpdatesCardSkeleton />;
+
   return (
     <Card>
       <CardHeader>
@@ -25,16 +26,16 @@ export default function RecentUpdatesCard({
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        {articles.map((article) => (
+        {recentUpdates.map((article) => (
           <Link
             href={routes.news.detail.getHref(article.id)}
             key={article.id}
             className="space-y-2 pb-3 border-b border-border last:border-b-0 block hover:text-primary"
           >
-            <div className="newspaper-body text-sm font-medium leading-tight line-clamp-1">
+            <div className="newspaper-body text-sm font-medium leading-tight line-clamp-2">
               {article.title}
             </div>
-            <div>
+            <div className="w-full flex justify-end">
               <TimeAgo
                 date={article.publishedAt}
                 className="text-xs text-muted-foreground"

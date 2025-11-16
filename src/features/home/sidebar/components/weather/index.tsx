@@ -3,25 +3,33 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import ClockTile from "./item";
+import WeatherTile from "./item";
+import { WeatherTileSkeleton } from "./skeleton";
 import { cn } from "@/lib/utils/cn";
-import { capitals } from "./data/capitals";
+import { useIranWeather } from "./hooks/useIranWeather";
 
-interface WorldClockSliderProps {
+interface IranWeatherSliderProps {
   variant?: "horizontal" | "vertical";
   className?: string;
 }
 
-export default function WorldClockSlider({
+export default function IranWeatherSlider({
   variant = "horizontal",
   className,
-}: WorldClockSliderProps) {
+}: IranWeatherSliderProps) {
   const isVertical = variant === "vertical";
+  const { data: weatherData, isLoading, error } = useIranWeather();
+
+  if (error) return null;
+
+  const slides = isLoading
+    ? Array.from({ length: 1 }).map((_, i) => <WeatherTileSkeleton key={i} />)
+    : weatherData?.map((item, i) => <WeatherTile key={i} data={item} />) || [];
 
   return (
     <div
       className={cn(
-        "relative w-full",
+        "relative w-full mb-0",
         isVertical ? "h-44" : "h-auto",
         className
       )}
@@ -36,25 +44,20 @@ export default function WorldClockSlider({
         grabCursor={true}
         speed={600}
         autoplay={
-          isVertical
-            ? {
-                delay: 2500,
-                disableOnInteraction: false,
-              }
-            : undefined
+          isVertical ? { delay: 2500, disableOnInteraction: false } : undefined
         }
         className="w-full h-full"
       >
-        {capitals.map((cap, i) => (
+        {slides.map((slide, i) => (
           <SwiperSlide
-            key={cap.cityEn + i}
+            key={i}
             className={cn(
               isVertical
-                ? "!h-full !w-auto flex items-center justify-center mb-0"
+                ? "!h-full !w-auto flex items-center justify-center"
                 : "!w-[180px] sm:!w-[200px] lg:!w-[220px]"
             )}
           >
-            <ClockTile city={cap.cityFa} timezone={cap.timezone} />
+            {slide}
           </SwiperSlide>
         ))}
       </Swiper>

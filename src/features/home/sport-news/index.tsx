@@ -5,19 +5,14 @@ import React from "react";
 import SportNewsGrid from "./components/grid";
 import { categories } from "@/constants/categories/categories";
 import { useLimitedNews } from "../hooks/useLimitedNews";
+import { ArticleCardSkeleton } from "@/components/shared/article-card/skeleton";
 
 const SportNews = () => {
   const sportCategory = categories.find((c) => c.title === "ورزش");
   const SportIcon = sportCategory?.icon;
 
-  // ✅ Fetch last 6 sport news
-  const {
-    data: articles,
-    isLoading,
-    isFetching,
-  } = useLimitedNews({
+  const { data: articles, isLoading } = useLimitedNews({
     category: "ورزش",
-    limit: 6,
     sort: "desc",
   });
 
@@ -29,11 +24,14 @@ const SportNews = () => {
       />
 
       {isLoading ? (
-        <p className="text-center py-6">در حال بارگذاری...</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {Array.from({ length: 6 }).map((_, idx) => (
+            <ArticleCardSkeleton key={idx} type="overlay" />
+          ))}
+        </div>
       ) : (
         <div>
           <SportNewsGrid articles={articles || []} />
-          {isFetching && <p className="text-center py-2">بارگذاری بیشتر...</p>}
         </div>
       )}
     </section>

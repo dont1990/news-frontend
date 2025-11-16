@@ -5,14 +5,10 @@ import SectionTitle from "@/components/shared/section-title";
 import React from "react";
 import { useLimitedNews } from "../hooks/useLimitedNews";
 import ClockIcon from "@/assets/shared-icons/clock";
+import { ArticleCardSkeleton } from "@/components/shared/article-card/skeleton";
 
 const LatestNews = () => {
-  const {
-    data: articles,
-    isLoading,
-    isFetching,
-  } = useLimitedNews({
-    limit: 6,
+  const { data: articles, isLoading } = useLimitedNews({
     sort: "desc",
   });
 
@@ -24,12 +20,13 @@ const LatestNews = () => {
       />
 
       {isLoading ? (
-        <p className="text-center py-6">در حال بارگذاری...</p>
-      ) : (
-        <div>
-          <LatestNewsGrid articles={articles || []} />
-          {isFetching && <p className="text-center py-2">بارگذاری بیشتر...</p>}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {Array.from({ length: 6 }).map((_, idx) => (
+            <ArticleCardSkeleton key={idx} />
+          ))}
         </div>
+      ) : (
+        <LatestNewsGrid articles={articles || []} />
       )}
     </section>
   );

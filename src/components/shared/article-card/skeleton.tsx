@@ -43,10 +43,13 @@ export function ArticleCardSkeleton({
 
   if (type === "bottomOverlay") {
     return (
-      <Card className="relative h-80 rounded-2xl animate-pulse p-0">
-        <Skeleton className="w-full h-full rounded-2xl" />
-        <CardContent className="absolute -bottom-[20%] left-1/2 -translate-x-1/2 w-[85%] p-4 rounded-2xl flex flex-col gap-2 text-center min-h-36">
-          <Skeleton className="h-4 w-1/4 mx-auto rounded" />
+      <Card className="relative aspect-video rounded-2xl animate-pulse p-0">
+        {/* Image */}
+        <Skeleton className="absolute inset-0 w-full h-full rounded-2xl" />
+
+        {/* Bottom Overlay */}
+        <CardContent className="absolute top-[85%] left-1/2 -translate-x-1/2 z-10 w-[85%] p-4 bg-background/60 backdrop-blur-md rounded-2xl shadow-md flex flex-col gap-3">
+          <Skeleton className="h-4 w-20 mx-auto rounded" />
           <Skeleton className="h-5 w-3/4 mx-auto rounded" />
           <Skeleton className="h-4 w-full mx-auto rounded" />
         </CardContent>

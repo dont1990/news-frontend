@@ -5,19 +5,14 @@ import React from "react";
 import TechNewsGrid from "./components/grid";
 import { categories } from "@/constants/categories/categories";
 import { useLimitedNews } from "../hooks/useLimitedNews";
+import { ArticleCardSkeleton } from "@/components/shared/article-card/skeleton";
 
 const TechNews = () => {
   const techCategory = categories.find((c) => c.title === "فناوری");
   const TechIcon = techCategory?.icon;
 
-  // ✅ Fetch last 6 tech news
-  const {
-    data: articles = [],
-    isLoading,
-    isFetching,
-  } = useLimitedNews({
+  const { data: articles = [], isLoading } = useLimitedNews({
     category: "فناوری",
-    limit: 6,
     sort: "desc",
   });
 
@@ -27,13 +22,15 @@ const TechNews = () => {
         title="اخبار فناوری"
         icon={TechIcon ? <TechIcon className="w-5 h-5" /> : undefined}
       />
-
       {isLoading ? (
-        <p className="text-center py-6">در حال بارگذاری...</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 gap-y-28">
+          {Array.from({ length: 6 }).map((_, idx) => (
+            <ArticleCardSkeleton key={idx} type="bottomOverlay" />
+          ))}
+        </div>
       ) : (
         <>
           <TechNewsGrid articles={articles} />
-          {isFetching && <p className="text-center py-2">بارگذاری بیشتر...</p>}
         </>
       )}
     </section>

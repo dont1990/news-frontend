@@ -1,8 +1,8 @@
 export const iranCities = [
   { en: "Tehran", fa: "تهران" },
   { en: "Mashhad", fa: "مشهد" },
-  { en: "Isfahan", fa: "اصفهان" },
-  { en: "Shiraz", fa: "شیراز" },
+  // { en: "Isfahan", fa: "اصفهان" },
+  // { en: "Shiraz", fa: "شیراز" },
   { en: "Tabriz", fa: "تبریز" },
   { en: "Karaj", fa: "کرج" },
   { en: "Qom", fa: "قم" },
