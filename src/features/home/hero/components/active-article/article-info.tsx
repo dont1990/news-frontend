@@ -20,7 +20,7 @@ export function HeroArticleInfo({ article }: Props) {
     !!article.id || !!article.sourceLink || !!article.description;
 
   return (
-    <div className="lg:col-span-5 flex flex-col justify-center gap-6 xl:gap-10 text-right">
+    <div className="lg:col-span-5 flex flex-col justify-center gap-6 lg:gap-8 xl:gap-10 text-right">
       {/* ✅ Category */}
       {article.category && (
         <div className="flex items-center">
@@ -30,9 +30,9 @@ export function HeroArticleInfo({ article }: Props) {
 
       {/* ✅ Title */}
       {article.title && (
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight text-foreground line-clamp-3 tracking-tight">
+        <p className="text-xl md:text-3xl xl:text-4xl font-extrabold leading-tight text-foreground line-clamp-3 tracking-tight">
           {article.title}
-        </h2>
+        </p>
       )}
 
       {/* ✅ Description */}
@@ -47,7 +47,7 @@ export function HeroArticleInfo({ article }: Props) {
         <div className="flex flex-wrap gap-3">
           {article.id && (
             <Link href={routes.news.detail.getHref(article.id)}>
-              <Button size="lg">مطالعه کامل خبر</Button>
+              <Button>مطالعه کامل خبر</Button>
             </Link>
           )}
 

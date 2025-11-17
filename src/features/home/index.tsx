@@ -3,11 +3,11 @@ import Hero from "./hero";
 import LatestNews from "./latest-news";
 import Container from "../../components/shared/container";
 import TechNews from "./tech-news";
-import { LiveRates } from "./live-rates";
 import SportNews from "./sport-news";
 import NewspapersGrid from "./newspaper";
 import { Suspense } from "react";
 import { BreakingNews } from "./breaking-news";
+import LiveRates from "./live-rates";
 
 export default function HomePageContent() {
   return (

@@ -1,19 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import CategoryBadge from "@/components/shared/category-badge";
-import ImagePlaceholder from "@/components/shared/image-placeholder"; 
+import ImagePlaceholder from "@/components/shared/image-placeholder";
 import { IArticle } from "@/types/article";
 
-type HeroThumbnailsProps = {
+interface IHeroThumbnailsProps {
   articles: IArticle[];
   active: number;
   onSelect: (index: number) => void;
-};
+}
 
-export function HeroThumbnails({ articles, active, onSelect }: HeroThumbnailsProps) {
+export function HeroThumbnails({
+  articles,
+  active,
+  onSelect,
+}: IHeroThumbnailsProps) {
   return (
-    <div className="lg:col-span-7 flex gap-3 h-[500px] overflow-hidden">
+    <div className="lg:col-span-7 flex gap-3 h-[280px] xs:h-[340px] sm:h-[400px] md:h-[500px] overflow-hidden">
       {articles.map((article, index) => (
         <button
           key={article.id}
@@ -42,9 +45,11 @@ export function HeroThumbnails({ articles, active, onSelect }: HeroThumbnailsPro
 
           {/* Active thumbnail text */}
           {index === active && (
-            <div className="absolute bottom-0 left-0 right-0 p-4 text-white text-start flex flex-col gap-2 transition-all">
-              <CategoryBadge title={article.category} />
-              <p className="font-bold text-lg line-clamp-2">{article.title}</p>
+            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 text-white text-start flex flex-col gap-2 transition-all">
+              {/* <CategoryBadge title={article.category} /> */}
+              <p className="font-bold text-base md:text-lg line-clamp-3">
+                {article.title}
+              </p>
             </div>
           )}
         </button>

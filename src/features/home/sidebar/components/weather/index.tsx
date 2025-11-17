@@ -24,7 +24,7 @@ export default function IranWeatherSlider({
 
   const slides = isLoading
     ? Array.from({ length: 1 }).map((_, i) => <WeatherTileSkeleton key={i} />)
-    : weatherData?.map((item, i) => <WeatherTile key={i} data={item} />) || [];
+    : weatherData?.map((item, i) => <WeatherTile key={i} weather={item} />) || [];
 
   return (
     <div

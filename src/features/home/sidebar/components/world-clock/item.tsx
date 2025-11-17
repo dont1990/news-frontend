@@ -2,20 +2,15 @@
 
 import { Sun, Moon } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
+import { IWorldClock } from "./types/world-clock";
 
-interface ClockTileProps {
-  city: string;
-  time: string;
-  hour: number;
-  timezoneAbbr?: string;
+interface IClockTileProps {
+  clock: IWorldClock;
 }
 
-export default function ClockTile({
-  city,
-  time,
-  hour,
-  timezoneAbbr,
-}: ClockTileProps) {
+export default function ClockTile({ clock }: IClockTileProps) {
+  const { city, hour, time, timezoneAbbr } = clock;
+
   const isNight = hour >= 18 || hour < 6;
   const gradient = isNight
     ? "from-indigo-500/20 via-purple-400/10"

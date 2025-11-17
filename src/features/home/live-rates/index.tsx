@@ -7,11 +7,10 @@ import { useRates } from "./hooks/useRates";
 import TrendingUpIcon from "@/assets/shared-icons/trending-up";
 import { mapLiveStats } from "./utils/mapLiveStats";
 
-export function LiveRates() {
+const LiveRates = () => {
   const { data, isLoading, isError } = useRates();
 
-  if (isError)
-    return <p className="text-center py-8">قیمت‌ها قابل دریافت نیست.</p>;
+  if (isError) return null;
 
   const liveStats = data ? mapLiveStats(data) : [];
 
@@ -30,4 +29,5 @@ export function LiveRates() {
       </div>
     </section>
   );
-}
+};
+export default LiveRates;

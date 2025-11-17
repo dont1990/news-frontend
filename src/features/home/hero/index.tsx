@@ -12,8 +12,7 @@ export default function HeroGrid() {
   const { active, setActive } = useHeroSlider(articles);
 
   if (isLoading) return <HeroSkeleton />;
-  if (error) return <p>خطا در بارگذاری اخبار: {error.message}</p>;
-  if (!articles || articles.length === 0) return <p>هیچ خبری موجود نیست.</p>;
+  if (error || !articles || articles.length === 0) return null;
 
   const activeArticle = articles[active];
 

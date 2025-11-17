@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils/cn";
 import { useWorldClock } from "./hooks/useWorldClock";
 import { ClockTileSkeleton } from "./skeleton";
 
-interface WorldClockSliderProps {
+interface IWorldClockSliderProps {
   variant?: "horizontal" | "vertical";
   className?: string;
 }
@@ -16,7 +16,7 @@ interface WorldClockSliderProps {
 export default function WorldClockSlider({
   variant = "horizontal",
   className,
-}: WorldClockSliderProps) {
+}: IWorldClockSliderProps) {
   const isVertical = variant === "vertical";
   const { data: clocks, isLoading, error } = useWorldClock();
 
@@ -24,15 +24,7 @@ export default function WorldClockSlider({
 
   const slides = isLoading
     ? Array.from({ length: 1 }).map((_, i) => <ClockTileSkeleton key={i} />)
-    : clocks?.map((clock, i) => (
-        <ClockTile
-          key={i}
-          city={clock.city}
-          time={clock.time}
-          hour={clock.hour}
-          timezoneAbbr={clock.timezoneAbbr}
-        />
-      )) || [];
+    : clocks?.map((clock, i) => <ClockTile key={i} clock={clock} />) || [];
 
   return (
     <div
