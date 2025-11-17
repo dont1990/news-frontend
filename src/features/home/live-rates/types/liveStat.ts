@@ -1,5 +1,5 @@
 // Trend can be "up" or "down"
-export type ITrend = "up" | "down";
+export type ITrend = "up" | "down" | "neutral";
 
 // Supported types of live stats
 export type ILiveStatType = "usd" | "gbp" | "coin" | "gold";

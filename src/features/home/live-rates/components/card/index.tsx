@@ -24,7 +24,10 @@ const iconMap: Record<
 
 export default function LiveStatCard({ stat }: { stat: ILiveStat }) {
   const IconComponent = iconMap[stat.type];
+
   const isUp = stat.trend === "up";
+  const isDown = stat.trend === "down";
+  const isNeutral = stat.trend === "neutral";
 
   return (
     <motion.div
@@ -36,14 +39,20 @@ export default function LiveStatCard({ stat }: { stat: ILiveStat }) {
           "relative p-3 rounded-xl overflow-hidden border border-transparent",
           "bg-gradient-to-br from-background via-background/80 to-background/50",
           "transition-all duration-300 hover:border-primary/30 hover:shadow-[0_0_20px_-5px_var(--tw-shadow-color)]",
-          isUp ? "shadow-emerald-500/20" : "shadow-rose-500/20"
+
+          // Shadow colors
+          isUp && "shadow-emerald-500/20",
+          isDown && "shadow-rose-500/20",
+          isNeutral && "shadow-muted/10"
         )}
       >
         {/* Soft accent ring */}
         <div
           className={cn(
             "absolute inset-0 rounded-xl opacity-10 blur-2xl transition-all duration-300",
-            isUp ? "bg-emerald-400" : "bg-rose-500"
+            isUp && "bg-emerald-400",
+            isDown && "bg-rose-500",
+            isNeutral && "bg-gray-400"
           )}
         />
 
@@ -53,13 +62,14 @@ export default function LiveStatCard({ stat }: { stat: ILiveStat }) {
             <div
               className={cn(
                 "p-2.5 rounded-xl transition-all duration-300",
-                isUp
-                  ? "bg-emerald-500/10 text-emerald-500"
-                  : "bg-rose-500/10 text-rose-500"
+                isUp && "bg-emerald-500/10 text-emerald-500",
+                isDown && "bg-rose-500/10 text-rose-500",
+                isNeutral && "bg-gray-400/10 text-gray-500"
               )}
             >
               <IconComponent className="size-5" />
             </div>
+
             <p className="text-base font-medium text-foreground/80 tracking-tight">
               {stat.title}
             </p>
@@ -70,22 +80,28 @@ export default function LiveStatCard({ stat }: { stat: ILiveStat }) {
             className={cn(
               "text-xs font-semibold rounded-full border-0",
               "px-2.5 py-1.5 flex items-center gap-1.5",
-              isUp
-                ? "bg-emerald-500/10 text-emerald-600"
-                : "bg-rose-500/10 text-rose-600"
+
+              isUp && "bg-emerald-500/10 text-emerald-600",
+              isDown && "bg-rose-500/10 text-rose-600",
+              isNeutral && "bg-gray-400/10 text-gray-600"
             )}
           >
+            {/* Dot animation */}
             <span className="relative flex size-2">
               <span
                 className={cn(
                   "absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping",
-                  isUp ? "bg-emerald-500" : "bg-rose-500"
+                  isUp && "bg-emerald-500",
+                  isDown && "bg-rose-500",
+                  isNeutral && "bg-gray-500"
                 )}
               />
               <span
                 className={cn(
                   "relative inline-flex size-2 rounded-full",
-                  isUp ? "bg-emerald-500" : "bg-rose-500"
+                  isUp && "bg-emerald-500",
+                  isDown && "bg-rose-500",
+                  isNeutral && "bg-gray-500"
                 )}
               />
             </span>
@@ -112,14 +128,16 @@ export default function LiveStatCard({ stat }: { stat: ILiveStat }) {
             transition={{ duration: 0.25, delay: 0.05 }}
             className={cn(
               "text-sm font-medium flex items-center gap-1 mt-1",
-              isUp ? "text-emerald-500" : "text-rose-500"
+              isUp && "text-emerald-500",
+              isDown && "text-rose-500",
+              isNeutral && "text-gray-500"
             )}
           >
-            {isUp ? (
-              <TrendingUpIcon className="w-4 h-4" />
-            ) : (
-              <TrendingDownIcon className="w-4 h-4" />
-            )}
+            {/* ICONS */}
+            {isUp && <TrendingUpIcon className="w-4 h-4" />}
+            {isDown && <TrendingDownIcon className="w-4 h-4" />}
+            {/* {isNeutral && <span className="text-sm">—</span>} */}
+
             {stat.change}
           </motion.span>
         </div>

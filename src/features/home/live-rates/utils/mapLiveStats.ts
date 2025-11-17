@@ -1,14 +1,22 @@
 import { ILiveStat } from "../types/liveStat";
+import { extractPercent } from "./extractPercent";
+import { getTrend } from "./getTrend";
 
-interface RatesData {
+interface IRatesData {
   tsetmc: { value: string; change?: string };
   dollar: { value: string; change?: string };
   coin: { value: string; change?: string };
   gold: { value: string; change?: string };
 }
 
-export function mapLiveStats(data: RatesData): ILiveStat[] {
+
+export function mapLiveStats(data: IRatesData): ILiveStat[] {
   if (!data) return [];
+
+  const tsetmcChange = extractPercent(data.tsetmc.change);
+  const dollarChange = extractPercent(data.dollar.change);
+  const coinChange = extractPercent(data.coin.change);
+  const goldChange = extractPercent(data.gold.change);
 
   return [
     {
@@ -16,7 +24,7 @@ export function mapLiveStats(data: RatesData): ILiveStat[] {
       title: "بورس",
       value: data.tsetmc.value,
       change: data.tsetmc.change || "0",
-      trend: Number(data.tsetmc.change) >= 0 ? "up" : "down",
+      trend: getTrend(tsetmcChange),
       type: "gbp",
     },
     {
@@ -24,7 +32,7 @@ export function mapLiveStats(data: RatesData): ILiveStat[] {
       title: "دلار",
       value: data.dollar.value,
       change: data.dollar.change || "0",
-      trend: Number(data.dollar.change) >= 0 ? "up" : "down",
+      trend: getTrend(dollarChange),
       type: "usd",
     },
     {
@@ -32,7 +40,7 @@ export function mapLiveStats(data: RatesData): ILiveStat[] {
       title: "سکه",
       value: data.coin.value,
       change: data.coin.change || "0",
-      trend: Number(data.coin.change) >= 0 ? "up" : "down",
+      trend: getTrend(coinChange),
       type: "coin",
     },
     {
@@ -40,7 +48,7 @@ export function mapLiveStats(data: RatesData): ILiveStat[] {
       title: "طلا",
       value: data.gold.value,
       change: data.gold.change || "0",
-      trend: Number(data.gold.change) >= 0 ? "up" : "down",
+      trend: getTrend(goldChange),
       type: "gold",
     },
   ];
