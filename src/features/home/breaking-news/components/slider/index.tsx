@@ -32,7 +32,6 @@ export function BreakingNewsTicker({ breakingNews }: BreakingNewsTickerProps) {
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-rose-500/10 via-rose-500/20 to-rose-500/10 animate-pulse"></div>
       </div>
-
       <Container className="relative !p-0">
         <div className="flex items-center justify-between gap-2 sm:gap-4">
           <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">

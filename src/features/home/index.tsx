@@ -18,7 +18,7 @@ export default function HomePageContent() {
         subtitle="آخرین اخبار فوری، تحلیل‌های عمیق و داستان‌های پرطرفدار از سراسر جهان"
       /> */}
 
-      <Suspense fallback={"loading ..."}>
+      <Suspense fallback={null}>
         <Container>
           <div className="flex flex-col lg:flex-row gap-6 mb-0">
             <div className="space-y-20 w-full lg:w-[calc(100%-336px)]">

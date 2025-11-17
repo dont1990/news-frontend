@@ -10,12 +10,13 @@ import SwiperWrapper from "./components/swiper";
 import NewspaperGallery from "./components/gallery";
 import NewspapersSwiperSkeleton from "./skeleton";
 
-export default function TopNewspapersSwiper() {
-  const { data, isLoading, error } = useTopNewspapers();
+export default function TopNewspapers() {
+  const { data: papers, isLoading, error } = useTopNewspapers();
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const openGallery = (index: number) => {
+    if (!papers?.length) return; 
     setSelectedIndex(index);
     setIsGalleryOpen(true);
   };
@@ -35,13 +36,13 @@ export default function TopNewspapersSwiper() {
         {isLoading ? (
           <NewspapersSwiperSkeleton />
         ) : (
-          <SwiperWrapper papers={data?.data || []} onSlideClick={openGallery} />
+          <SwiperWrapper papers={papers || []} onSlideClick={openGallery} />
         )}
       </Container>
 
-      {data && (
+      {papers && (
         <NewspaperGallery
-          galleryItems={data?.data || []}
+          galleryItems={papers}
           isGalleryOpen={isGalleryOpen}
           selectedIndex={selectedIndex}
           setIsGalleryOpen={setIsGalleryOpen}

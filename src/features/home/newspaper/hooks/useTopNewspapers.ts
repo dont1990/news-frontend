@@ -4,16 +4,16 @@ import { INewspaper } from "@/types/newspaper";
 import { PAGE_LIMIT } from "@/constants/global";
 
 export function useTopNewspapers(limit = PAGE_LIMIT) {
-  return useQuery<{
-    data: INewspaper[];
-  }>({
+  return useQuery<INewspaper[]>({
     queryKey: ["top-newspapers", limit],
-    queryFn: () =>
-      apiClient<{ data: INewspaper[] }>("newspapers", {
+    queryFn: async () => {
+      const res = await apiClient<{ data: INewspaper[] }>("newspapers", {
         limit,
         sort: "az",
         page: 1,
-      }),
+      });
+      return res.data;
+    },
     refetchOnWindowFocus: false,
   });
 }

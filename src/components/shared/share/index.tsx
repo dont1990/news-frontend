@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { IconActionButton } from "@/components/shared/icon-action-button";
 
-interface ShareButtonProps {
+interface IShareButtonProps {
   url?: string;
   title?: string;
   description?: string;
@@ -21,9 +21,9 @@ export function ShareButton({
   title = "این خبر را ببینید!",
   description = "",
   variant = "ghost",
-  size = "lg",
+  size = "default",
   showLabel = false,
-}: ShareButtonProps) {
+}: IShareButtonProps) {
   const [copied, setCopied] = useState(false);
 
   const shareOptions = [

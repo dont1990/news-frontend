@@ -76,7 +76,7 @@ export function Header() {
               />
             </div>
 
-            <NotificationsButton />
+            {/* <NotificationsButton /> */}
           </motion.div>
         </motion.div>
 

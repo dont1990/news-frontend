@@ -51,21 +51,20 @@ export function HeroArticleInfo({ article }: Props) {
             </Link>
           )}
 
-          <IconActionButton
+          {/* <IconActionButton
             icon={<Bookmark className="w-4 h-4" />}
             tooltip="افزودن به نشان‌ها"
             variant="ghost"
             size="lg"
-          />
+          /> */}
 
           {article.title && (
             <ShareButton
               url={article.sourceLink ?? window.location.href}
               title={article.title}
               description={article.description}
-              variant="ghost"
-              size="lg"
-              showLabel={false}
+              variant="outline"
+              showLabel
             />
           )}
         </div>

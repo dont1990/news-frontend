@@ -5,7 +5,7 @@ import Clock from "../../../../assets/shared-icons/clock";
 import UserIcon from "../../assets/user";
 import CalendarIcon from "../../../../assets/shared-icons/calendar";
 import Share from "../../assets/share";
-import Bookmark from "../../assets/bookmark";
+import BookmarkIcon from "../../assets/bookmark";
 import { IArticle } from "@/types/article";
 import DateText from "@/components/shared/date-text";
 import TimeAgo from "@/components/shared/time-ago";
@@ -82,14 +82,14 @@ export default function ArticleHeader({ article }: IArticleHeaderProps) {
           <Share className="h-4 w-4" />
           اشتراک‌گذاری
         </Button>
-        <Button
+        {/* <Button
           variant="outline"
           size="sm"
           className="gap-2 hover:bg-primary hover:text-primary-foreground transition-colors bg-transparent"
         >
-          <Bookmark className="h-4 w-4" />
+          <BookmarkIcon className="h-4 w-4" />
           ذخیره برای بعد
-        </Button>
+        </Button> */}
       </div>
     </header>
   );
