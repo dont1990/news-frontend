@@ -116,8 +116,7 @@ export function NewsListFilter({
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="latest">جدید ترین</SelectItem>
-                  <SelectItem value="popular">محبوب‌ ترین</SelectItem>
-                  <SelectItem value="commented">بیشترین نظر</SelectItem>
+                  <SelectItem value="oldest">قدیمی ترین</SelectItem>
                 </SelectContent>
               </Select>
             </div>

@@ -6,13 +6,13 @@ import { LatestNewsGrid } from "./components/grid";
 import { routes } from "@/routes/routes";
 
 export default function LatestNews() {
-  const { data: articles, isLoading } = useLimitedNews({ sort: "desc" });
+  const { data: articles, isLoading } = useLimitedNews({});
 
   return (
     <NewsSection
       title="آخرین اخبار"
       icon={<ClockIcon className="w-5 h-5" />}
-      link={routes.news.getHref({ sort: "جدیدترین" })}
+      link={routes.news.getHref({ sort: "latest" })}
       articles={articles}
       isLoading={isLoading}
       GridComponent={LatestNewsGrid}

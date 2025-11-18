@@ -7,9 +7,7 @@ import RecentUpdatesContent from "./content";
 import { Card } from "@/components/ui/card";
 
 const RecentUpdates = () => {
-  const { data: recentNews = [], isLoading } = useLimitedNews({
-    sort: "desc",
-  });
+  const { data: recentNews = [], isLoading } = useLimitedNews({});
 
   return (
     <Card>

@@ -5,12 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { routes } from "@/routes/routes";
 
-interface Props {
+interface ITrendingItemProps {
   article: IArticle;
   index: number;
 }
 
-export default function TrendingItem({ article, index }: Props) {
+export default function TrendingItem({ article, index }: ITrendingItemProps) {
   return (
     <li className="min-w-[250px] md:min-w-0 flex-shrink-0">
       <Link

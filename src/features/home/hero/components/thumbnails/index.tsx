@@ -21,7 +21,7 @@ export function HeroThumbnails({
         <button
           key={article.id}
           onClick={() => onSelect(index)}
-          className={`relative overflow-hidden rounded-2xl transition-all duration-700 ease-[cubic-bezier(.4,0,.2,1)] ${
+          className={`relative cursor-pointer overflow-hidden rounded-2xl transition-all duration-700 ease-[cubic-bezier(.4,0,.2,1)] ${
             index === active ? "flex-[3]" : "flex-[0.7] hover:flex-[1]"
           }`}
         >

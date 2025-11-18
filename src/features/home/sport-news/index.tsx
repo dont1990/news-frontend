@@ -9,7 +9,6 @@ export default function SportNews() {
   const category = categories.find((c) => c.title === "ورزش");
   const { data: articles, isLoading } = useLimitedNews({
     category: "ورزش",
-    sort: "desc",
   });
 
   return (

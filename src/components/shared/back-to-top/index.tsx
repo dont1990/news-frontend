@@ -41,7 +41,7 @@ export default function BackToTopButton() {
         >
           <button
             onClick={scrollToTop}
-            className="relative flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white shadow-xl hover:bg-primary/90"
+            className="relative flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white shadow-xl hover:bg-primary/90 cursor-pointer"
             aria-label="Back to top"
           >
             <ArrowUp className="w-6 h-6" />

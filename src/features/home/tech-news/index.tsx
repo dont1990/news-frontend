@@ -9,7 +9,6 @@ export default function TechNews() {
   const category = categories.find((c) => c.title === "فناوری");
   const { data: articles, isLoading } = useLimitedNews({
     category: "فناوری",
-    sort: "desc",
   });
 
   return (

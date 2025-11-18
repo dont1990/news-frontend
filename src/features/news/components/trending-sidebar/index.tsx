@@ -5,11 +5,11 @@ import { NAVBAR_HEIGHT } from "@/constants/global";
 import { TrendingHeader } from "./header";
 import TrendingList from "./list";
 
-interface Props {
+interface ITrendingSidebarProps {
   articles: IArticle[];
 }
 
-export function TrendingSidebar({ articles }: Props) {
+export function TrendingSidebar({ articles }: ITrendingSidebarProps) {
   return (
     <aside
       className="p-3 border border-border rounded-2xl bg-muted/30 shadow-sm h-fit w-full lg:w-80 lg:mt-0 sticky"

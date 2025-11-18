@@ -2,17 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import { IArticle } from "@/types/article";
 import { apiClient } from "@/lib/api/api-client";
 
-interface UseLimitedNews {
+interface IUseLimitedNews {
   category?: string;
-  limit?: number; // number of articles to fetch
-  sort?: "asc" | "desc";
+  limit?: number;
+  sort?: "latest" | "oldest";
 }
 
 export function useLimitedNews({
   category,
   limit = 6,
-  sort = "desc",
-}: UseLimitedNews) {
+  sort = "latest",
+}: IUseLimitedNews) {
   return useQuery<IArticle[], Error>({
     queryKey: ["newsByCategory", category, limit, sort],
     queryFn: () =>

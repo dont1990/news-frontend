@@ -9,6 +9,7 @@ import NewspaperIcon from "./assets/newspaper";
 import SwiperWrapper from "./components/swiper";
 import NewspaperGallery from "./components/gallery";
 import NewspapersSwiperSkeleton from "./skeleton";
+import { routes } from "@/routes/routes";
 
 export default function TopNewspapers() {
   const { data: papers, isLoading, error } = useTopNewspapers();
@@ -16,7 +17,7 @@ export default function TopNewspapers() {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const openGallery = (index: number) => {
-    if (!papers?.length) return; 
+    if (!papers?.length) return;
     setSelectedIndex(index);
     setIsGalleryOpen(true);
   };
@@ -28,9 +29,9 @@ export default function TopNewspapers() {
       <div className="bg-primary/5 absolute inset-0 w-1/2 mr-auto"></div>
       <Container>
         <SectionTitle
-          link="/newspaper"
           title="روزنامه‌ها"
           icon={<NewspaperIcon className="size-6 text-primary" />}
+          link={routes.newspaper.getHref()}
         />
 
         {isLoading ? (

@@ -83,9 +83,8 @@ export function SearchPageFilter({
               <SelectValue placeholder="مرتب‌سازی" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="latest">جدیدترین</SelectItem>
-              <SelectItem value="popular">محبوب‌ترین</SelectItem>
-              <SelectItem value="commented">بیشترین نظر</SelectItem>
+              <SelectItem value="latest">جدید ترین</SelectItem>
+              <SelectItem value="oldest">قدیمی ترین</SelectItem>
             </SelectContent>
           </Select>
         </div>
