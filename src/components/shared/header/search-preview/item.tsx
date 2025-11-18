@@ -32,7 +32,7 @@ export function SearchResultItem({ article, onClick }: SearchResultItemProps) {
         router.push(`/article/${id}`);
         onClick();
       }}
-      className="hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/5 transition-all duration-200 cursor-pointer border-b border-border/50 last:border-b-0 group"
+      className="hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/5 transition-all duration-300 cursor-pointer border-b border-border/50 last:border-b-0 group"
     >
       <div className="p-5 flex gap-4">
         <div className="relative overflow-hidden rounded-2xl flex-shrink-0 w-20 h-16">

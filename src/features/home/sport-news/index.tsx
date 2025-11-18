@@ -1,41 +1,26 @@
 "use client";
-
-import SectionTitle from "@/components/shared/section-title";
-import React from "react";
+import { NewsSection } from "@/components/shared/news-section";
+import { useLimitedNews } from "../hooks/useLimitedNews";
 import SportNewsGrid from "./components/grid";
 import { categories } from "@/constants/categories/categories";
-import { useLimitedNews } from "../hooks/useLimitedNews";
-import { ArticleCardSkeleton } from "@/components/shared/article-card/skeleton";
+import { routes } from "@/routes/routes";
 
-const SportNews = () => {
-  const sportCategory = categories.find((c) => c.title === "ورزش");
-  const SportIcon = sportCategory?.icon;
-
+export default function SportNews() {
+  const category = categories.find((c) => c.title === "ورزش");
   const { data: articles, isLoading } = useLimitedNews({
     category: "ورزش",
     sort: "desc",
   });
 
   return (
-    <section>
-      <SectionTitle
-        title="اخبار ورزشی"
-        icon={SportIcon ? <SportIcon className="w-5 h-5" /> : undefined}
-      />
-
-      {isLoading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {Array.from({ length: 6 }).map((_, idx) => (
-            <ArticleCardSkeleton key={idx} type="overlay" />
-          ))}
-        </div>
-      ) : (
-        <div>
-          <SportNewsGrid articles={articles || []} />
-        </div>
-      )}
-    </section>
+    <NewsSection
+      title="اخبار ورزشی"
+      icon={category?.icon ? <category.icon className="w-5 h-5" /> : undefined}
+      link={routes.news.getHref({ category: "ورزش" })}
+      articles={articles}
+      isLoading={isLoading}
+      GridComponent={SportNewsGrid}
+      skeletonType="overlay"
+    />
   );
-};
-
-export default SportNews;
+}

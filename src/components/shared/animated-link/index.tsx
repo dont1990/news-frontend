@@ -28,7 +28,7 @@ export const AnimatedLink: FC<AnimatedLinkProps> = ({
   const content = (
     <Link
       {...props}
-      className={`transition-colors duration-200 group-hover/link:text-primary hover:font-medium flex items-center gap-1 ${className}`}
+      className={`transition-colors duration-300 group-hover/link:text-primary hover:font-medium flex items-center gap-1 ${className}`}
     >
       {Icon && (
         <Icon className="w-4 h-4 inline-block text-muted-foreground mr-1 group-hover/link:text-primary" />

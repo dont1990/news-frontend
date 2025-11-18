@@ -57,14 +57,14 @@ export default function DesktopNav({ navItems }: Props) {
                 <NavigationMenuItem>
                   <NavigationMenuLink
                     asChild
-                    className={`group/nav px-4 py-2 text-sm font-medium rounded-md hover:bg-primary/10 hover:text-primary transition-all duration-200 relative flex items-center gap-2 ${
+                    className={`group/nav px-4 py-2 text-sm font-medium rounded-md hover:bg-primary/10 hover:text-primary transition-all duration-300 relative flex items-center gap-2 ${
                       isActive ? "text-gray-900 bg-primary/10" : "text-gray-500"
                     }`}
                   >
                     <Link href={navItem.path}>
                       <Icon className="w-5 h-5 group-hover/nav:text-primary transition-colors" />
                       <span>{navItem.title}</span>
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover/nav:w-full"></span>
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover/nav:w-full"></span>
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>

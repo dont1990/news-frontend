@@ -11,10 +11,7 @@ interface MobileNavProps {
   navItems: INavItem[];
 }
 
-export default function MobileNav({
-  onClose,
-  navItems,
-}: MobileNavProps) {
+export default function MobileNav({ onClose, navItems }: MobileNavProps) {
   const pathName = usePathname();
 
   return (
@@ -25,7 +22,7 @@ export default function MobileNav({
         animate={{ opacity: 0.5 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
-        onClick={onClose} 
+        onClick={onClose}
         className="fixed inset-0 bg-black z-40 h-dvh top-64"
       />
 
@@ -53,7 +50,7 @@ export default function MobileNav({
                   <Link
                     href={navItem.path}
                     onClick={onClose}
-                    className={`group/nav flex flex-col items-center justify-center gap-1 px-4 py-3 text-sm font-medium rounded-2xl bg-muted/50 hover:bg-primary/10 hover:text-primary transition-all duration-200 shadow-sm hover:shadow-md ${
+                    className={`group/nav flex flex-col items-center justify-center gap-1 px-4 py-3 text-sm font-medium rounded-2xl bg-muted/50 hover:bg-primary/10 hover:text-primary transition-all duration-300 shadow-sm hover:shadow-md ${
                       isActive ? "text-gray-900 bg-primary/10" : "text-gray-500"
                     }`}
                   >

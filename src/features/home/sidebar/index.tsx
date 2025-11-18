@@ -9,7 +9,7 @@ import WorldClockSlider from "./components/world-clock";
 
 export function HomePageSidebar() {
   return (
-    <div className={`sticky`} style={{ top: NAVBAR_HEIGHT }}>
+    <div>
       <div className="grid gap-y-6" dir="rtl">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-1">
           <TrendingTopicsCard />

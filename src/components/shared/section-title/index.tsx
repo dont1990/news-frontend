@@ -2,13 +2,13 @@ import { TrendingDown } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-type Props = {
+interface ISectionTitleProps {
   title: string;
   link?: string;
   icon?: React.ReactNode;
-};
+}
 
-const SectionTitle = ({ title, link, icon }: Props) => {
+const SectionTitle = ({ title, link, icon }: ISectionTitleProps) => {
   return (
     <div className="mb-6 border-b border-border pb-2 flex justify-between gap-2 text-base items-center">
       {/* Left: Title + optional icon */}

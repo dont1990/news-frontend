@@ -43,7 +43,7 @@ export function ArticleCardSkeleton({
 
   if (type === "bottomOverlay") {
     return (
-      <Card className="relative aspect-video rounded-2xl animate-pulse p-0">
+      <Card className="relative aspect-video rounded-2xl animate-pulse p-0 mb-20">
         {/* Image */}
         <Skeleton className="absolute inset-0 w-full h-full rounded-2xl" />
 

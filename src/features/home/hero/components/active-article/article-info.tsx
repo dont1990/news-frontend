@@ -2,9 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Bookmark } from "lucide-react";
 import { ShareButton } from "@/components/shared/share";
-import { IconActionButton } from "@/components/shared/icon-action-button";
 import { routes } from "@/routes/routes";
 import { Separator } from "@/components/ui/separator";
 import CategoryBadge from "@/components/shared/category-badge";
