@@ -22,16 +22,20 @@ export function useTagNavigation() {
   };
 
   const navigateWithTags = (tags: string[]) => {
-    const isSearchOrNews =
-      pathname.startsWith("/search") || pathname.startsWith("/news");
+    const isNewsListingPage = pathname === "/news";
+    const isSearchPage = pathname.startsWith("/search");
+    const query = tags.length
+      ? `?tags=${encodeURIComponent(tags.join(","))}`
+      : "";
 
-    const query = tags.length ? `?tags=${encodeURIComponent(tags.join(","))}` : "";
-
-    if (isSearchOrNews) {
-      // stay on current page — just update params (existing behavior)
-      updateParams({ tags: tags.length ? tags.join(",") : null }, { replace: true });
+    if (isNewsListingPage || isSearchPage) {
+      // stay on current page, just update params
+      updateParams(
+        { tags: tags.length ? tags.join(",") : null },
+        { replace: true }
+      );
     } else {
-      // go to search (or news) page
+      // redirect to search page from other pages (like /news/[id])
       router.push(`/search${query}`);
     }
   };
@@ -39,7 +43,9 @@ export function useTagNavigation() {
   const recordTagClick = useMutation({
     mutationFn: async (tag: string) => {
       await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/tags/${encodeURIComponent(tag)}/click`,
+        `${process.env.NEXT_PUBLIC_API_URL}/tags/${encodeURIComponent(
+          tag
+        )}/click`,
         { method: "POST" }
       );
     },

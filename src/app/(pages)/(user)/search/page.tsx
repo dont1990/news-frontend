@@ -3,7 +3,7 @@ import { Suspense } from "react";
 
 const SearchPage = () => {
   return (
-    <Suspense fallback="loading ...">
+    <Suspense fallback={null}>
       <SearchPageContent />
     </Suspense>
   );

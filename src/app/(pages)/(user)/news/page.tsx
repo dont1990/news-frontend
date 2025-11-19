@@ -3,7 +3,7 @@ import { NewsListPage } from "@/features/news";
 
 const NewsPage = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={null}>
       <NewsListPage />
     </Suspense>
   );

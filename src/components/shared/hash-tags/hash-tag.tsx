@@ -6,12 +6,12 @@ import { useTagNavigation } from "./hooks/useTagNavigation";
 import { useCallback } from "react";
 import HashTagIcon from "@/assets/shared-icons/hash";
 
-type Props = {
+interface IHashTagProps {
   tag: string;
   highlighted?: boolean;
-};
+}
 
-const HashTag = ({ tag, highlighted = false }: Props) => {
+const HashTag = ({ tag, highlighted = false }: IHashTagProps) => {
   const { toggleTag, navigateWithTags, recordTagClick, getTagState } =
     useTagNavigation();
   const { isActive } = getTagState(tag, highlighted);

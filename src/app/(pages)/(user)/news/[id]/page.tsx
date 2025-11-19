@@ -7,7 +7,7 @@ export async function generateMetadata({
 }: {
   params: { id: string };
 }): Promise<Metadata> {
-  const { id } = params;
+  const { id } =await params;
   const article = await getArticleById(id);
 
   if (!article) {
@@ -35,6 +35,6 @@ export default async function ArticlePage({
 }: {
   params: { id: string };
 }) {
-  const { id } = params;
+  const { id } =await params;
   return <ArticlePageWrapper id={id} />;
 }
