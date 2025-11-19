@@ -21,10 +21,13 @@ export default function ArticlePageWrapper({ id }: { id: string }) {
   }, [id, article, incrementView]);
 
   if (isLoading) return <ArticleDetailSkeleton />;
-  if ((error instanceof IApiError && error.status === 404) || !article) {
+  if (
+    (error instanceof IApiError && error.status === 404) ||
+    error ||
+    !article
+  ) {
     return <NotFound />;
   }
-  if (error) return <div>مشکلی رخ داده است.</div>;
 
   return <ArticlePageContent article={article} />;
 }

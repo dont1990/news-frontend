@@ -11,16 +11,22 @@ import { NAVBAR_HEIGHT } from "@/constants/global";
 import { routes } from "@/routes/routes";
 import ArticleHashTags from "@/components/shared/hash-tags";
 import ArticleDescription from "./components/description";
+import { useLimitedNews } from "../home/hooks/useLimitedNews";
 
-interface ArticlePageContentProps {
+interface IArticlePageContentProps {
   article: IArticle;
 }
 
 export default function ArticlePageContent({
   article,
-}: ArticlePageContentProps) {
-  // TODO: Replace with API fetch for related articles
-  const relatedArticles: IArticle[] = [];
+}: IArticlePageContentProps) {
+  const { data: relatedArticles = [], isLoading } = useLimitedNews({
+    category: article.category,
+    limit: 6,
+    sort: "latest",
+    excludeId: article.id,
+  });
+
   return (
     <Container>
       <div className="mb-8">
@@ -40,10 +46,7 @@ export default function ArticlePageContent({
         </article>
 
         <aside className="xl:col-span-1 sticky" style={{ top: NAVBAR_HEIGHT }}>
-          <ArticleRelated
-            relatedArticles={relatedArticles}
-            currentArticle={article}
-          />
+          <ArticleRelated relatedArticles={relatedArticles} />
         </aside>
       </div>
     </Container>

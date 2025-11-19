@@ -6,20 +6,27 @@ interface IUseLimitedNews {
   category?: string;
   limit?: number;
   sort?: "latest" | "oldest";
+  excludeId?: string;
 }
 
 export function useLimitedNews({
   category,
   limit = 6,
   sort = "latest",
+  excludeId,
 }: IUseLimitedNews) {
   return useQuery<IArticle[], Error>({
     queryKey: ["newsByCategory", category, limit, sort],
-    queryFn: () =>
-      apiClient<{ data: IArticle[] }>("news", {
+    queryFn: async () => {
+      const { data } = await apiClient<{ data: IArticle[] }>("news", {
         category,
         limit,
         sort,
-      }).then((res) => res.data),
+      });
+
+      // Remove the current article from the list
+      return excludeId ? data.filter(a => a.id !== excludeId) : data;
+    },
+    enabled: !!category, // Don’t fetch unless category is known
   });
 }

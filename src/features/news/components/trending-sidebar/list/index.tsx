@@ -3,7 +3,11 @@
 import { IArticle } from "@/types/article";
 import TrendingItem from "./item";
 
-export default function TrendingList({ articles }: { articles: IArticle[] }) {
+interface ITrendingList {
+  articles: IArticle[];
+}
+
+export default function TrendingList({ articles }: ITrendingList) {
   if (!articles?.length) {
     return <p>موردی یافت نشد.</p>;
   }

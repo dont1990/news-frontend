@@ -7,7 +7,7 @@ import { InfiniteLoader } from "@/components/shared/infinite-loader";
 import { EmptyCategory } from "./empty";
 import { FeaturedArticle } from "./featured-article";
 
-interface Props {
+interface INewsListArticlesProps {
   articles: IArticle[];
   category: string;
   categoryName: string;
@@ -23,7 +23,7 @@ export function NewsListArticles({
   query,
   infiniteScrollRef,
   isFetchingNextPage,
-}: Props) {
+}: INewsListArticlesProps) {
   const categoryColors = getCategoryColors(category);
 
   if (!articles || articles.length === 0) {
