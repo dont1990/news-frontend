@@ -27,6 +27,5 @@ export function useLimitedNews({
       // Remove the current article from the list
       return excludeId ? data.filter(a => a.id !== excludeId) : data;
     },
-    enabled: !!category, // Don’t fetch unless category is known
   });
 }

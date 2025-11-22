@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useQueryParams } from "@/hooks/useQueryParams";
 import { routes } from "@/routes/routes";
 import { IArticle } from "@/types/article";
-import { useNewsFeed } from "@/features/news/hooks/useNewsFeed";
+import { useNewsFeed } from "@/hooks/useNewsFeed";
 
 export function useSearch() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -26,7 +26,7 @@ export function useSearch() {
   }, [getParam]);
 
   // Fetch news based on current search query
-  const { articles } = useNewsFeed(
+  const { items: articles } = useNewsFeed(
     useMemo(
       () => (searchQuery.trim() ? { search: searchQuery.trim() } : {}),
       [searchQuery]

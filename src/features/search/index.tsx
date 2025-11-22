@@ -1,70 +1,50 @@
 "use client";
 
-import { useMemo } from "react";
-import { useQueryParams } from "@/hooks/useQueryParams";
-import { useNewsFeed } from "../news/hooks/useNewsFeed";
+import { useNewsFeed } from "../../hooks/useNewsFeed";
 import Container from "../../components/shared/container";
 import { SearchPageFilter } from "./components/filter";
 import { SearchPageResults } from "./components/results";
 import { SearchPageEmpty } from "./components/results/empty";
 import { PageHeader } from "../../components/shared/page-header";
 import SearchIcon from "@/assets/shared-icons/search";
+import { useNewsQueryFilters } from "@/hooks/useNewsQueryFilters";
 
 export default function SearchPageContent() {
-  const { getParam, setParam } = useQueryParams();
-  const query = getParam("query") || "";
-
-  const category = getParam("category") || "همه";
-  const dateFilter =
-    (getParam("date") as "all" | "today" | "week" | "month") || "all";
-  const sort = getParam("sort") || "latest";
-
-  // ✅ parse tags from query param
-  const tags = (getParam("tags")?.split(",") || []).filter(Boolean);
-
-  const filters = useMemo(
-    () => ({ search: query, category, dateFilter, sort, tags }),
-    [query, category, dateFilter, sort, tags]
-  );
-
-  const { articles, total, ref, isFetchingNextPage } = useNewsFeed(filters);
+  const { filters, setFilters, raw } = useNewsQueryFilters();
+  const {
+    items: articles,
+    total,
+    ref,
+    isFetchingNextPage,
+  } = useNewsFeed(filters);
 
   return (
     <>
       <PageHeader
-        title={query ? `نتایج برای "${query}"` : "جستجوی اخبار"}
-        subtitle={
-          query
-            ? `${total} مقاله یافت شد که با جستجوی شما مطابقت دارد`
-            : undefined
-        }
-        icon={<SearchIcon className="h-6 w-6 text-primary" />}
+        title={raw.search ? `نتایج "${raw.search}"` : "جستجوی اخبار"}
+        subtitle={raw.search ? `${total} نتیجه یافت شد` : undefined}
         badgeText="نتایج جستجو"
         badgeCount={total}
+        icon={<SearchIcon />}
       />
       <Container>
         <SearchPageFilter
-          category={category}
-          setCategory={(val) => setParam("category", val)}
-          dateFilter={dateFilter}
-          setDateFilter={(val) => setParam("date", val)}
-          sort={sort}
-          setSort={(val) => setParam("sort", val)}
-          tags={tags}
-          setTags={(newTags) =>
-            setParam("tags", newTags.length ? newTags.join(",") : null)
-          }
+          {...raw}
+          setCategory={setFilters.category}
+          setDateFilter={setFilters.dateFilter}
+          setSort={setFilters.sort}
+          setTags={setFilters.tags}
         />
 
-        {articles.length > 0 ? (
+        {articles.length ? (
           <SearchPageResults
             articles={articles}
-            query={query}
+            query={raw.search}
             infiniteScrollRef={ref}
             isFetchingNextPage={isFetchingNextPage}
           />
         ) : (
-          <SearchPageEmpty query={query} />
+          <SearchPageEmpty query={raw.search} />
         )}
       </Container>
     </>

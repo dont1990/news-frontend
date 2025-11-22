@@ -3,6 +3,7 @@ import { useInfinite } from "@/hooks/useInfinite";
 import { categories as staticCategories } from "@/constants/categories/categories";
 import HashTagIcon from "@/assets/shared-icons/hash";
 import { ICategory } from "@/constants/categories/types/category";
+import { PAGE_LIMIT } from "@/constants/global";
 
 function mergeCategories(apiCats: string[]): ICategory[] {
   const mappedApiCats: ICategory[] = apiCats.map((title) => {
@@ -24,7 +25,7 @@ type CategoryFilters = {
 
 export function useInfiniteCategories(
   filters?: CategoryFilters,
-  limit: number = 10
+  limit: number = PAGE_LIMIT
 ) {
   const {
     items,

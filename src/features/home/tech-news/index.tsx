@@ -12,15 +12,21 @@ export default function TechNews() {
   });
 
   return (
-    <NewsSection
-      title="اخبار فناوری"
-      icon={category?.icon ? <category.icon className="w-5 h-5" /> : undefined}
-      link={routes.news.getHref({ category: "فناوری" })}
-      articles={articles}
-      isLoading={isLoading}
-      GridComponent={TechNewsGrid}
-      skeletonType="bottomOverlay"
-      containerClass="mb-48"
-    />
+    <>
+      {Boolean(articles?.length) && (
+        <NewsSection
+          title="اخبار فناوری"
+          icon={
+            category?.icon ? <category.icon className="w-5 h-5" /> : undefined
+          }
+          link={routes.news.getHref({ category: "فناوری" })}
+          articles={articles}
+          isLoading={isLoading}
+          GridComponent={TechNewsGrid}
+          skeletonType="bottomOverlay"
+          containerClass="mb-48"
+        />
+      )}
+    </>
   );
 }

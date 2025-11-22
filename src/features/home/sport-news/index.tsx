@@ -12,14 +12,20 @@ export default function SportNews() {
   });
 
   return (
-    <NewsSection
-      title="اخبار ورزشی"
-      icon={category?.icon ? <category.icon className="w-5 h-5" /> : undefined}
-      link={routes.news.getHref({ category: "ورزش" })}
-      articles={articles}
-      isLoading={isLoading}
-      GridComponent={SportNewsGrid}
-      skeletonType="overlay"
-    />
+    <>
+      {Boolean(articles?.length) && (
+        <NewsSection
+          title="اخبار ورزشی"
+          icon={
+            category?.icon ? <category.icon className="w-5 h-5" /> : undefined
+          }
+          link={routes.news.getHref({ category: "ورزش" })}
+          articles={articles}
+          isLoading={isLoading}
+          GridComponent={SportNewsGrid}
+          skeletonType="overlay"
+        />
+      )}
+    </>
   );
 }
