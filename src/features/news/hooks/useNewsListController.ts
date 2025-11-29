@@ -26,7 +26,7 @@ export function useNewsListController() {
     loading,
   } = useNewsFeed(filters);
 
-  const { data: globalTrending } = useTrendingNews();
+  const { data: trendingArticles } = useTrendingNews();
 
   // category data
   const categoryObj = categories.find((c) => c.title === raw.category);
@@ -38,12 +38,6 @@ export function useNewsListController() {
     raw.category === "همه"
       ? "مروری بر همه مقالات موجود در سایت..."
       : categoryObj?.description;
-
-  // trending combined logic
-  const trendingArticles = useMemo(
-    () => (raw.category === "همه" ? globalTrending || [] : articles.slice(0, 5)),
-    [raw.category, globalTrending, articles]
-  );
 
   return {
     raw,

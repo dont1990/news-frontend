@@ -1,5 +1,6 @@
 "use client";
 
+import { PER_PAGE } from "@/constants/global";
 import { apiClient } from "@/lib/api/api-client";
 import { useQuery } from "@tanstack/react-query";
 
@@ -8,7 +9,7 @@ export interface TagStat {
   clicks: number;
 }
 
-export function useTrendingTags(limit = 5) {
+export function useTrendingTags(limit = PER_PAGE) {
   return useQuery<TagStat[], Error>({
     queryKey: ["trendingTags", limit],
     queryFn: async () => {

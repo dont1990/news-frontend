@@ -1,6 +1,5 @@
 "use client";
 
-import { NAVBAR_HEIGHT } from "@/constants/global";
 import { Newsletter } from "@/features/home/sidebar/components/newsletter";
 import RecentUpdates from "./components/recent-updates";
 import TrendingTopicsCard from "./components/trending-topics";

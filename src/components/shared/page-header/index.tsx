@@ -30,21 +30,25 @@ export function PageHeader({
     <section
       className={`bg-gradient-to-br from-primary/10 via-primary/5 to-primary/10 border-b border-border ${categoryColors.bg}/20`}
     >
-      <Container className="text-center flex flex-col gap-2">
+      <Container className="text-center flex flex-col gap-8">
         <p
-          className={`text-4xl md:text-5xl mb-4 font-medium ${categoryColors.primaryText}`}
+          className={`
+            text-xl sm:text-2xl md:text-4xl font-medium 
+            ${categoryColors.primaryText}
+            truncate overflow-hidden text-ellipsis whitespace-nowrap
+          `}
         >
           {title}
         </p>
 
         {subtitle && (
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
             {subtitle}
           </p>
         )}
 
         {icon && (
-          <div className="flex items-center justify-center gap-2 mb-4">
+          <div className="flex items-center justify-center gap-2">
             <div className={`${categoryColors.primaryText}`}>{icon}</div>
             {badgeText && (
               <Badge

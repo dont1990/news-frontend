@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { IArticle } from "@/types/article";
 import { apiClient } from "@/lib/api/api-client";
-import { PAGE_LIMIT } from "@/constants/global";
+import { PER_PAGE } from "@/constants/global";
 
-export function useBreakingNews(limit: number = PAGE_LIMIT) {
+export function useBreakingNews(limit: number = PER_PAGE) {
   return useQuery<IArticle[], Error>({
     queryKey: ["breakingNews", limit],
     queryFn: () =>

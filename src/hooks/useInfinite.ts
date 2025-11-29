@@ -2,7 +2,7 @@ import { useInfiniteQuery, QueryFunctionContext } from "@tanstack/react-query";
 import { apiClient } from "@/lib/api/api-client";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import { PAGE_LIMIT } from "@/constants/global";
+import { PER_PAGE } from "@/constants/global";
 import { Params } from "@/types";
 
 export interface IPaginatedResponse<T> {
@@ -15,7 +15,7 @@ export interface IPaginatedResponse<T> {
 export function useInfinite<T>(
   endpoint: string,
   params?: Params,
-  limit: number = PAGE_LIMIT
+  limit: number = PER_PAGE
 ) {
   // 1️⃣ Setup the infinite query
   const query = useInfiniteQuery<IPaginatedResponse<T>, Error>({

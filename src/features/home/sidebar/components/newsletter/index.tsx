@@ -59,15 +59,15 @@ export function Newsletter() {
               <form onSubmit={handleSubmit} className="space-y-4 relative">
                 {/* Input with icon */}
                 <div className="relative">
-                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary w-5 h-5 z-[1]">
-                    <MailIcon className="w-5 h-5" />
+                  <div className="absolute right-2 top-1/2 transform -translate-y-1/2 text-primary size-6 z-[1]">
+                    <MailIcon className="size-6" />
                   </div>
                   <Input
                     type="email"
                     placeholder="ایمیل خود را وارد کنید"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="ps-10 pr-4 py-4 text-lg bg-transparent border border-primary text-gray-700 ring ring-primary placeholder:text-gray-500 rounded-2xl focus:!ring-primary"
+                    className="ps-9 py-4 text-lg bg-transparent border border-primary text-gray-700 ring ring-primary placeholder:text-gray-500 rounded-2xl focus:!ring-primary"
                     required
                   />
                 </div>

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { IArticle } from "@/types/article";
 import { apiClient } from "@/lib/api/api-client";
+import { PER_GRID } from "@/constants/global";
 
 interface IUseLimitedNews {
   category?: string;
@@ -11,7 +12,7 @@ interface IUseLimitedNews {
 
 export function useLimitedNews({
   category,
-  limit = 6,
+  limit = PER_GRID,
   sort = "latest",
   excludeId,
 }: IUseLimitedNews) {

@@ -4,7 +4,7 @@ import { IArticle } from "@/types/article";
 import TrendingItem from "./item";
 
 interface ITrendingList {
-  articles: IArticle[];
+  articles: IArticle[] | undefined;
 }
 
 export default function TrendingList({ articles }: ITrendingList) {

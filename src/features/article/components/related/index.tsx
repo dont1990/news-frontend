@@ -31,6 +31,7 @@ export default function ArticleRelated({
             href={routes.news.detail.getHref(relatedArticle.id)}
           >
             {/* Card content */}
+            {relatedArticle.title}
           </Link>
         ))}
       </div>

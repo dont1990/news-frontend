@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { apiClient } from "@/lib/api/api-client";
 import { INewspaper } from "@/types/newspaper";
-import { PAGE_LIMIT } from "@/constants/global";
+import { PER_PAGE } from "@/constants/global";
 
-export function useTopNewspapers(limit = PAGE_LIMIT) {
+export function useTopNewspapers(limit = PER_PAGE) {
   return useQuery<INewspaper[]>({
     queryKey: ["top-newspapers", limit],
     queryFn: async () => {

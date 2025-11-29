@@ -1,4 +1,3 @@
-import React from "react";
 import ClockIcon from "@/assets/shared-icons/clock";
 import { CardHeader, CardTitle } from "@/components/ui/card";
 

@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import TrendingUpIcon from "@/assets/shared-icons/trending-up";
 import { CardHeader, CardTitle } from "@/components/ui/card";
 

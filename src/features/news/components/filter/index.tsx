@@ -14,7 +14,7 @@ import Chips from "@/components/ui/chips";
 import CloseIcon from "@/assets/shared-icons/close";
 import HashTagIcon from "@/assets/shared-icons/hash";
 
-interface Props {
+interface INewsListFilterProps {
   category: string;
   setCategory: (v: string) => void;
   searchInput: string;
@@ -40,7 +40,7 @@ export function NewsListFilter({
   setSort,
   tags,
   setTags,
-}: Props) {
+}: INewsListFilterProps) {
   const filters: {
     label: string;
     value: "all" | "today" | "week" | "month";
@@ -117,6 +117,7 @@ export function NewsListFilter({
                 <SelectContent>
                   <SelectItem value="latest">جدید ترین</SelectItem>
                   <SelectItem value="oldest">قدیمی ترین</SelectItem>
+                  <SelectItem value="views">پر بازدیدترین</SelectItem>
                 </SelectContent>
               </Select>
             </div>

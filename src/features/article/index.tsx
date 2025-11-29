@@ -22,10 +22,10 @@ export default function ArticlePageContent({
 }: IArticlePageContentProps) {
   const { data: relatedArticles = [], isLoading } = useLimitedNews({
     category: article.category,
-    limit: 6,
     sort: "latest",
     excludeId: article.id,
   });
+
 
   return (
     <Container>

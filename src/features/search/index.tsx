@@ -22,7 +22,7 @@ export default function SearchPageContent() {
     <>
       <PageHeader
         title={raw.search ? `نتایج "${raw.search}"` : "جستجوی اخبار"}
-        subtitle={raw.search ? `${total} نتیجه یافت شد` : undefined}
+        // subtitle={raw.search ? `${total} نتیجه یافت شد` : undefined}
         badgeText="نتایج جستجو"
         badgeCount={total}
         icon={<SearchIcon />}

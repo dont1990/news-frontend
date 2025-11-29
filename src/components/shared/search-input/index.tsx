@@ -7,7 +7,7 @@ import CloseIcon from "@/assets/shared-icons/close";
 import SearchIcon from "@/assets/shared-icons/search";
 import { cn } from "@/lib/utils/cn";
 
-interface SearchInputProps {
+interface ISearchInputProps {
   value: string;
   onChange: (v: string) => void;
   onSearch?: (value?: string) => void; // optional
@@ -27,7 +27,7 @@ export function SearchInput({
   className,
   onKeyDown,
   onFocus,
-}: SearchInputProps) {
+}: ISearchInputProps) {
   const handleClear = () => {
     onChange("");
     onClear?.();

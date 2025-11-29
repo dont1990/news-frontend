@@ -13,7 +13,7 @@ import Chips from "@/components/ui/chips";
 import HashTagIcon from "@/assets/shared-icons/hash";
 import CloseIcon from "@/assets/shared-icons/close";
 
-interface Props {
+interface ISearchPageFilterProps {
   category: string;
   setCategory: (v: string) => void;
   dateFilter: "all" | "today" | "week" | "month";
@@ -33,7 +33,7 @@ export function SearchPageFilter({
   setSort,
   tags,
   setTags,
-}: Props) {
+}: ISearchPageFilterProps) {
   const filters: {
     label: string;
     value: "all" | "today" | "week" | "month";
@@ -85,6 +85,7 @@ export function SearchPageFilter({
             <SelectContent>
               <SelectItem value="latest">جدید ترین</SelectItem>
               <SelectItem value="oldest">قدیمی ترین</SelectItem>
+              <SelectItem value="views">پر بازدیدترین</SelectItem>
             </SelectContent>
           </Select>
         </div>
